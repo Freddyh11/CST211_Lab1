@@ -135,7 +135,7 @@ T& Array<T>::operator [] (const int index)
 //    {
 //        throw std::out_of_range("Index out of range"); //---------> error here
 //    }
-    return m_array[index];
+    return m_array[index - m_start_index];
 }
 
 
