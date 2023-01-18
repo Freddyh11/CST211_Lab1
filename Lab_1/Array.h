@@ -17,11 +17,6 @@ using std::cin;
 using std::endl;
 using std::string;
 
-/*
-    m_array = nullptr;
-    m_length = length;
-    m_start_index = start_index;
-    */
 
 template <typename T>
 class Array {
@@ -51,10 +46,9 @@ public:
 };
 
 template<typename T>
-Array<T>::Array(int length, int start_index) :
-    m_start_index(start_index), m_length(length)
+Array<T>::Array(int length, int start_index) :m_start_index(start_index), m_length(length)
 {
-   if(length <= 0)
+   if(length < 0)
         throw std::invalid_argument("length must be positive");
    m_array = new T[length];
 }
@@ -131,13 +125,8 @@ Array<T>& Array<T>::operator = (Array<T>&& move) noexcept
 template<typename T>
 T& Array<T>::operator [] (const int index)
 {
-//    if (index < m_start_index || index >= m_start_index + m_length)
-//    {
-//        throw std::out_of_range("Index out of range"); //---------> error here
-//    }
     return m_array[index - m_start_index];
 }
-
 
 
 template<typename T>
@@ -159,9 +148,14 @@ const int Array<T>::getLength()
 }
 
 template<typename T>
-void Array<T>::setLength(int length)
+void Array<T>::setLength(int length) 
 {
+    if (length <= 0)
+    {
+        throw Exception("ERROR: Array Lengths cannot be Negative!");
+    }
     m_length = length;
+    
 }
 
 
