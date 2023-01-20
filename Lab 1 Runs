@@ -33,3 +33,41 @@ You have 4 failed tests
 sh: pause: command not found
 Exiting...
 Program ended with exit code: 0
+
+//********************************************************************************************
+
+Negative length test passed
+Lower bounds test passed
+Upper bounds test passed
+2 arg ctor test passed
+1 arg ctor test passed
+Default ctor test passed
+Pos start index test passed
+Neg start index test passed
+Add values test passed
+Change larger length with data test passed
+Change smaller length with data test passed
+Set start index with data test passed
+Copy ctor test passed
+Move ctor test passed
+Op equal test passed
+Negative length test complex passed
+Lower bounds test complex passed
+Upper bounds test complex passed
+2 arg ctor test complex passed
+1 arg ctor test complex passed
+Default ctor test complex passed
+Pos start index test complex passed
+Neg start index test complex passed
+Add values test complex passed
+Change larger length with data test complex passed
+Change smaller length with data test complex passed
+Set start index with data test complex passed
+Copy ctor test complex passed
+Move ctor complex test passed
+Op equal test complex passed
+
+All tests passed! Good job!
+sh: pause: command not found
+Exiting...
+Program ended with exit code: 0
