@@ -48,13 +48,12 @@ public:
 template<typename T>
 Array<T>::Array(int length, int start_index) :m_start_index(start_index), m_length(length)
 {
-   if(length < 0)
-        throw std::invalid_argument("length must be positive");
-   m_array = new T[length];
+    
+   m_array = new T[length]; // create dynamic mem for array
 }
 
 template<typename T>
-Array<T>::Array(const Array<T>& copy)
+Array<T>::Array(const Array<T>& copy) // copy construct
 {
     if(this != &copy)
         {
@@ -69,7 +68,7 @@ Array<T>::Array(const Array<T>& copy)
 }
 
 template<typename T>
-Array<T>::Array(Array<T>&& move) noexcept
+Array<T>::Array(Array<T>&& move) noexcept 
 {
     m_length = move.m_length;
        m_start_index = move.m_start_index;
@@ -83,7 +82,7 @@ Array<T>::Array(Array<T>&& move) noexcept
 template<typename T>
 Array<T>::~Array()
 {
-    delete []m_array;
+    delete []m_array; // delete array mem
 }
 
 template<typename T>
@@ -91,7 +90,7 @@ Array<T>& Array<T>::operator = (const Array<T>& copy)
 {
     if (this != &copy) {
             delete[] m_array;
-            m_array = new T[copy.m_length];
+            m_array = new T[m_length];
             m_start_index = copy.m_start_index;
             m_length = copy.m_length;
             for (int i = 0; i < m_length; i++) {
@@ -125,6 +124,10 @@ Array<T>& Array<T>::operator = (Array<T>&& move) noexcept
 template<typename T>
 T& Array<T>::operator [] (const int index)
 {
+    if(index < 0 || index > 20)
+    {
+        throw Exception("ERROR");
+    }
     return m_array[index - m_start_index];
 }
 
@@ -148,15 +151,15 @@ const int Array<T>::getLength()
 }
 
 template<typename T>
-void Array<T>::setLength(int length) 
+void Array<T>::setLength(int length)
 {
-    if (length <= 0)
+    if (length <= 0) // check to see if length of array is < 0
     {
-        throw Exception("ERROR: Array Lengths cannot be Negative!");
+       throw Exception("ERROR: Array Lengths cannot be Negative!"); // Exception should be caught
     }
     m_length = length;
     
 }
 
-
 #endif /* Array_h */
+
